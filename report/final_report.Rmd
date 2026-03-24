@@ -1,0 +1,55 @@
+---
+title: "F75 Project Final Report"
+author: "DATA 550 Team"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(knitr)
+```
+
+# Overview
+
+This report is the reproducible scaffold for the F75 project. The repository is
+organized so that data cleaning, figures, tables, and modeling live in separate
+scripts under `code/`, while this report focuses on assembling and describing the
+results.
+
+# Workflow
+
+The report is built by `make`, which runs the cleaning script, analysis modules,
+and then renders this file. This structure supports clear task delegation across
+team members and keeps the final document reproducible.
+
+# Data
+
+# Required Figure
+
+
+# Required Table
+
+
+# Additional Analyses
+
+## Kaplan-Meier Curve
+
+
+## Clinical Outcomes Table
+
+
+## Regression Planning Output
+
+
+## Supplementary EDA
+
+
+# Team Notes
+
+- Yixin Hu: longitudinal boxplots
+- Helen Chen: Kaplan-Meier analysis and regression interpretation
+- Sihang Jiang: summary tables and supplementary EDA
+- Yuchen Li: regression modeling
+- Project leader: workflow integration, output definitions, and final report assembly
+

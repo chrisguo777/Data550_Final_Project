@@ -1,0 +1,14 @@
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+.DS_Store
+Thumbs.db
+
+report/final_report.html
+
+output/figure/*
+output/table/*
+!output/figure/.gitkeep
+!output/table/.gitkeep
