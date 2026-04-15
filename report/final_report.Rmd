@@ -1,6 +1,6 @@
 ---
 title: "F75 Project Final Report"
-author: "DATA 550 Team"
+author: "Team: Yingpu (Paxton) Guo, Hua Xuan (Helen) Chen, Yuchen Li, Yixin Hu, Sihang Jiang"
 date: "`r Sys.Date()`"
 output: html_document
 ---
@@ -33,7 +33,11 @@ team members and keeps the final document reproducible.
 
 # Additional Analyses
 
-## Kaplan-Meier Curve
+## Kaplan-Meier Curves
+
+Six Kaplan-Meier curves were constructed to analyze the time-to-stabilization (event being stabilization) for patients who did not experience deaths in the trial, stratified by the following variables: sex, study site, whether or not the child was breastfeeding at all, whether or not the child had Kwashiorkor (type of severe malnutrition), HIV status, and the randomization arm. 
+
+From the plot below, we can see that the trajectories to stabilization are not statistically significantly different between males and females (p = 0.11). That being said, it appears that in general, males reached stabilization faster than females.
 
 ```{r, plot1}
 knitr::include_graphics(
@@ -41,11 +45,15 @@ knitr::include_graphics(
 )
 ```
 
+From the plot below, we can see that the trajectories to stabilization are not statistically significantly different between the 3 sites (p = 0.051), however, site B seems to have a generally faster time-to-stabilization compared to the other two sites.
+
 ```{r, plot2}
 knitr::include_graphics(
   here::here("output/figure/KM_plot_site.png")
 )
 ```
+
+From the plot below, we can see that the trajectories to stabilization are generally similar between those still on breastfeeding and those who are not - they are not statistically significantly different (p = 0.29). That being said, in general, those who weren't on breastfeeding seem to have faster time-to-stabilization compared to those on breastfeeding. Perhaps age might be an interesting covariate to consider when explaining days to stabilization as the response, as those who are older wouldn't be on breastfeeding.
 
 ```{r, plot3}
 knitr::include_graphics(
@@ -53,17 +61,23 @@ knitr::include_graphics(
 )
 ```
 
+From the plot below, we can see that the trajectories to stabilization are not statistically significantly different between those who had Kwashiorkor and those who didn't (p = 0.23). That being said, in general, those who didn't have Kwashiorkor appear to have faster time-to-stabilization compared to those who did have Kwashiorkor, suggesting that those who had this form of severe malnutrition took longer to achieve stabilization.
+
 ```{r, plot4}
 knitr::include_graphics(
   here::here("output/figure/KM_plot_kwash.png")
 )
 ```
 
+From the plot below, we can see that the trajectories to stabilization are generally similar between those who were HIV positive, HIV negative, or had unknown HIV status - they are not statistically significantly different (p = 0.22). That being said, in general, we can see that those who were HIV- seemed to have faster time-to-stabilization compared to those who were HIV+. Since HIV affects the immune system, this trend is understandable.
+
 ```{r, plot5}
 knitr::include_graphics(
   here::here("output/figure/KM_plot_hiv.png")
 )
 ```
+
+From the plot below, we can see that the trajectories to stabilization were not statistically significantly different between those who had the modified milk formula (intervention) compared to those who had the standard milk formula (p = 0.43). That being said, in general, those who were on the modifed milk formula appear to have faster time-to-stabilization compared to those who were on the standard formula. While this finding was not significant, it does suggest that the intervention could be effective in helping children reach stabilization faster, which could lead to better health outcomes.
 
 ```{r, plot6}
 knitr::include_graphics(

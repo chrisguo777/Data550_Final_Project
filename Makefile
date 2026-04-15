@@ -17,7 +17,12 @@ output/table/regression_results.csv: code/04_regression.R data/cleaned_data.rds
 
 report/final_report.html: report/final_report.Rmd \
 	output/figure/required_figure.png \
-	output/figure/km_curve.png \
+	output/figure/KM_plot_sex.png \
+	output/figure/KM_plot_site.png \
+	output/figure/KM_plot_bfeeding.png \
+	output/figure/KM_plot_kwash.png \
+	output/figure/KM_plot_hiv.png \
+	output/figure/KM_plot_arm.png \
 	output/table/required_table.csv \
 	output/table/regression_results.csv
 	Rscript -e "rmarkdown::render('report/final_report.Rmd', output_file = 'final_report.html', output_dir = 'report')"
