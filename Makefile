@@ -6,17 +6,30 @@ data/cleaned_data.rds: code/00_data_cleaning.R data/f75_interim.csv
 output/figure/required_figure.png: code/01_boxplots.R data/cleaned_data.rds
 	Rscript code/01_boxplots.R
 	
-output/figure/KM_plot_arm.png: code/02_kaplan_meier_curve.R data/cleaned_data.rds
+output/figure/km_curve.png: code/02_kaplan_meier_curve.R data/cleaned_data.rds
 	Rscript code/02_kaplan_meier_curve.R
 
 output/table/required_table.csv: code/03_summary_tables.R data/cleaned_data.rds
 	Rscript code/03_summary_tables.R
-
+	
 output/table/regression_results.csv: code/04_regression.R data/cleaned_data.rds
 	Rscript code/04_regression.R
 
+output/figure/KM_plot_sex.png \
+output/figure/KM_plot_site.png \
+output/figure/KM_plot_bfeeding.png \
+output/figure/KM_plot_kwash.png \
+output/figure/KM_plot_hiv.png \
+output/figure/KM_plot_arm.png: code/02_kaplan_meier_curve.R data/cleaned_data.rds
+	Rscript code/02_kaplan_meier_curve.R
+
 report/final_report.html: report/final_report.Rmd \
 	output/figure/required_figure.png \
+	output/figure/KM_plot_sex.png \
+	output/figure/KM_plot_site.png \
+	output/figure/KM_plot_bfeeding.png \
+	output/figure/KM_plot_kwash.png \
+	output/figure/KM_plot_hiv.png \
 	output/figure/KM_plot_arm.png \
 	output/table/required_table.csv \
 	output/table/regression_results.csv
