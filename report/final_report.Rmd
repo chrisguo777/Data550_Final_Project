@@ -35,6 +35,41 @@ team members and keeps the final document reproducible.
 
 ## Kaplan-Meier Curve
 
+```{r, plot1}
+knitr::include_graphics(
+  here::here("output/figure/KM_plot_sex.png")
+)
+```
+
+```{r, plot2}
+knitr::include_graphics(
+  here::here("output/figure/KM_plot_site.png")
+)
+```
+
+```{r, plot3}
+knitr::include_graphics(
+  here::here("output/figure/KM_plot_bfeeding.png")
+)
+```
+
+```{r, plot4}
+knitr::include_graphics(
+  here::here("output/figure/KM_plot_kwash.png")
+)
+```
+
+```{r, plot5}
+knitr::include_graphics(
+  here::here("output/figure/KM_plot_hiv.png")
+)
+```
+
+```{r, plot6}
+knitr::include_graphics(
+  here::here("output/figure/KM_plot_arm.png")
+)
+```
 
 ## Clinical Outcomes Table
 
