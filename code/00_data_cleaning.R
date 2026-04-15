@@ -11,8 +11,10 @@ cleaned_data <- raw_data %>%
   mutate(
     arm = factor(arm),
     sex = factor(sex),
-    site = factor(site)
-  )
+    site = factor(site),
+    status = ifelse(days_stable != 999, 1, 0)
+  ) %>%
+  filter(days_stable != 999) # only look at non-deaths
 
 # TODO (Project leader):
 # Confirm the final cleaned-data variable dictionary and missing-value rules.
