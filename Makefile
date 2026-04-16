@@ -2,8 +2,11 @@ all: report/final_report.html
 
 data/cleaned_data.rds: code/00_data_cleaning.R data/f75_interim.csv
 	Rscript code/00_data_cleaning.R
-
-output/figure/required_figure.png: code/01_boxplots.R data/cleaned_data.rds
+	
+output/figure/muac_boxplot.png \
+output/figure/weight_boxplot.png \
+output/figure/height_boxplot.png: \
+code/01_boxplots.R data/cleaned_data.rds
 	Rscript code/01_boxplots.R
 	
 output/figure/km_curve.png: code/02_kaplan_meier_curve.R data/cleaned_data.rds
@@ -24,7 +27,9 @@ output/figure/KM_plot_arm.png: code/02_kaplan_meier_curve.R data/cleaned_data.rd
 	Rscript code/02_kaplan_meier_curve.R
 
 report/final_report.html: report/final_report.Rmd \
-	output/figure/required_figure.png \
+	output/figure/muac_boxplot.png \
+  output/figure/weight_boxplot.png \
+  output/figure/height_boxplot.png \
 	output/figure/KM_plot_sex.png \
 	output/figure/KM_plot_site.png \
 	output/figure/KM_plot_bfeeding.png \
