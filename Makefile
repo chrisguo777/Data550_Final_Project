@@ -28,8 +28,8 @@ output/figure/KM_plot_arm.png: code/02_kaplan_meier_curve.R data/cleaned_data.rd
 
 report/final_report.html: report/final_report.Rmd \
 	output/figure/muac_boxplot.png \
-  output/figure/weight_boxplot.png \
-  output/figure/height_boxplot.png \
+	output/figure/weight_boxplot.png \
+	output/figure/height_boxplot.png \
 	output/figure/KM_plot_sex.png \
 	output/figure/KM_plot_site.png \
 	output/figure/KM_plot_bfeeding.png \
