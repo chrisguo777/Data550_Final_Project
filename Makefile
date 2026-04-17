@@ -12,7 +12,7 @@ output/figure/km_curve.png: code/02_kaplan_meier_curve.R data/cleaned_data.rds
 output/table/required_table.csv: code/03_summary_tables.R data/cleaned_data.rds
 	Rscript code/03_summary_tables.R
 	
-output/table/regression_results.csv: code/04_regression.R data/cleaned_data.rds
+output/table/logistic_regression_results.csv output/table/linear_regression_results.csv: code/04_regression.R data/cleaned_data.rds
 	Rscript code/04_regression.R
 
 output/figure/KM_plot_sex.png \
@@ -32,7 +32,8 @@ report/final_report.html: report/final_report.Rmd \
 	output/figure/KM_plot_hiv.png \
 	output/figure/KM_plot_arm.png \
 	output/table/required_table.csv \
-	output/table/regression_results.csv
+	output/table/logistic_regression_results.csv \
+        output/table/linear_regression_results.csv
 	Rscript -e "rmarkdown::render('report/final_report.Rmd', output_file = 'final_report.html', output_dir = 'report')"
 
 

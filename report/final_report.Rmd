@@ -90,6 +90,41 @@ knitr::include_graphics(
 
 ## Regression Planning Output
 
+```{r}
+### Logistic Regression Results (Discharged Status)
+
+logit_results <- read.csv(
+  here::here("output", "table", "logistic_regression_results.csv")
+)
+
+logit_results
+```
+
+From the logistic regression analysis, we were able to determine the correlation between the clinical and demographic factors and the probability of discharge.
+
+Regarding the effect of the formula, the intervention (Modified F75) failed to have a significant effect compared to the other (standard F75) (p > 0.05), implying that there is no sufficient evidence to support the use of the modified formula for discharges.
+
+The patient's HIV status had an interesting correlation with the discharge. The patients who did not have their HIV status determined had significantly low chances of being discharged than those whose HIV status was negative.
+
+Age, gender, MUAC, and weight were not found to be significant factors in the prediction of discharge.
+
+```{r}
+### Linear Regression Results (Days Stable)
+
+linear_results <- read.csv(
+  here::here("output", "table", "linear_regression_results.csv")
+)
+
+linear_results
+```
+
+Factors correlated with number of days to stabilization have been identified from the linear regression analysis.
+
+There were few predictors which proved to be statistically significant, hence indicating that these variables do not affect the time taken for stabilization in this data set.
+
+Only one variable, kwashiorkor had some statistical significance (p-value was very close to 0.05) which indicated that those who had kwashiorkor took more days to get stabilized.
+
+This suggests there may be some clinical significance in the result obtained but this needs to be studied with a large sample size to confirm the finding.
 
 ## Supplementary EDA
 
