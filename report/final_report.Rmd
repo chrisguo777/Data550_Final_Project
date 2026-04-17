@@ -24,9 +24,8 @@ The report is built by `make`, which runs the cleaning script, analysis modules,
 and then renders this file. This structure supports clear task delegation across
 team members and keeps the final document reproducible.
 
-# Data
-
 # Required Figure
+
 The figure below shows the correlation structure among continuous clinical variables, including baseline anthropometric measurements, follow-up measurements, and days to stabilization.
 
 ```{r required-figure}
@@ -36,6 +35,29 @@ knitr::include_graphics(
 ```
 
 The correlation heatmap provides an exploratory overview of the continuous-variable structure in the dataset. As expected, anthropometric measurements collected at related time points tended to show stronger positive relationships with one another, reflecting consistency across measures such as MUAC, weight, and height. By contrast, days to stabilization did not appear to be driven by a single dominant continuous variable, suggesting that stabilization time is likely multifactorial rather than strongly explained by one isolated measurement. Because the heatmap was generated from the cleaned analysis dataset, which excluded death-coded observations, it should be interpreted as reflecting patterns among participants with observed stabilization trajectories.
+
+```{r, Figure1}
+knitr::include_graphics(
+  here::here("output/figure/height_boxplot.png")
+)
+```
+For height, the comparison between baseline and discharge shows a modest upward shift in the distribution. While the median height increases slightly, the change is less pronounced than that observed for MUAC and weight. This is expected, as height is less sensitive to short-term nutritional interventions. The relatively stable spread of the data suggests that changes in height are limited over the study period.
+
+```{r, Figure2}
+knitr::include_graphics(
+  here::here("output/figure/muac_boxplot.png")
+)
+```
+From the boxplots of MUAC across baseline, stabilization, and discharge, we observe a clear upward trend in the distribution of MUAC over time. The median MUAC increases progressively from baseline to discharge, suggesting overall nutritional improvement during treatment. Additionally, the interquartile range (IQR) appears to shift upward, indicating that this improvement is consistent across a large proportion of patients. While some variability remains at each time point, the general pattern supports a positive response to the intervention.
+
+
+```{r, Figure3}
+knitr::include_graphics(
+  here::here("output/figure/weight_boxplot.png")
+)
+```
+The boxplots for weight show a similar increasing trend from baseline through stabilization to discharge. The median weight rises steadily, indicating that patients tend to gain weight during the treatment period. The spread of the data (IQR) also shifts upward, suggesting that weight gain is not limited to a small subset of patients but is observed broadly across the cohort. Although outliers are present, they do not substantially alter the overall pattern of weight improvement over time.
+
 
 # Required Table
 Baseline characteristics were summarized for the full study population by treatment group. Continuous variables were presented as mean (SD) or median (IQR), as appropriate, and categorical variables were presented as n (%).
@@ -48,7 +70,7 @@ knitr::kable(
 ```
 
 Baseline characteristics were generally well balanced between the Standard F75 and Modified F75 groups, supporting a fair descriptive comparison of subsequent outcomes. The two treatment arms were nearly equal in size, and there were no obvious imbalances across age, sex, study site, caregiver relationship, breastfeeding status, or the major baseline anthropometric measures. Baseline MUAC, weight, and height appeared similar across groups, suggesting that the randomized arms were broadly comparable at study entry. Overall, these results indicate that any later differences in outcomes are less likely to be explained by major baseline differences alone.
-# Additional Analyses
+
 
 ## Kaplan-Meier Curves
 
