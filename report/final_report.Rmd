@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(knitr)
+library(here)
 ```
 
 # Overview
@@ -26,11 +27,27 @@ team members and keeps the final document reproducible.
 # Data
 
 # Required Figure
+The figure below shows the correlation structure among continuous clinical variables, including baseline anthropometric measurements, follow-up measurements, and days to stabilization.
 
+```{r required-figure}
+knitr::include_graphics(
+  here::here("output/figure/heatmap_continuous.png")
+)
+```
+
+The correlation heatmap provides an exploratory overview of the continuous-variable structure in the dataset. As expected, anthropometric measurements collected at related time points tended to show stronger positive relationships with one another, reflecting consistency across measures such as MUAC, weight, and height. By contrast, days to stabilization did not appear to be driven by a single dominant continuous variable, suggesting that stabilization time is likely multifactorial rather than strongly explained by one isolated measurement. Because the heatmap was generated from the cleaned analysis dataset, which excluded death-coded observations, it should be interpreted as reflecting patterns among participants with observed stabilization trajectories.
 
 # Required Table
+Baseline characteristics were summarized for the full study population by treatment group. Continuous variables were presented as mean (SD) or median (IQR), as appropriate, and categorical variables were presented as n (%).
 
+```{r required-table}
+knitr::kable(
+  read.csv(here::here("output/table/table1_baseline.csv"))
+)
 
+```
+
+Baseline characteristics were generally well balanced between the Standard F75 and Modified F75 groups, supporting a fair descriptive comparison of subsequent outcomes. The two treatment arms were nearly equal in size, and there were no obvious imbalances across age, sex, study site, caregiver relationship, breastfeeding status, or the major baseline anthropometric measures. Baseline MUAC, weight, and height appeared similar across groups, suggesting that the randomized arms were broadly comparable at study entry. Overall, these results indicate that any later differences in outcomes are less likely to be explained by major baseline differences alone.
 # Additional Analyses
 
 ## Kaplan-Meier Curves
@@ -87,13 +104,39 @@ knitr::include_graphics(
 
 ## Clinical Outcomes Table
 
+Clinical outcomes were summarized by treatment group using the full sample. Values coded as 999 for `days_stable` were treated as death codes rather than numeric stabilization times when summarizing time to stabilization.
 
+```{r clinical-outcomes-cat}
+knitr::kable(
+  read.csv(here::here("output/table/table2_outcomes_cat.csv"))
+)
+
+knitr::kable(
+  read.csv(here::here("output/table/table2_outcomes_days.csv"))
+)
+```
+
+Clinical outcomes did not suggest a clear descriptive advantage of Modified F75 over Standard F75. In-hospital death remained a notable outcome overall, and the Standard F75 group showed slightly lower mortality and slightly higher successful discharge than the Modified F75 group. Reached stabilization was common in both arms, although the Standard F75 group appeared to have a modestly higher proportion of participants who stabilized, while failure to stabilize before death or withdrawal was somewhat more frequent in the Modified F75 group. Importantly, among participants with observed stabilization times, the median days to stabilization was the same in both treatment groups, indicating no meaningful difference in stabilization speed at the level of simple summary statistics. In this analysis, values coded as 999 for days_stable were treated as death codes rather than true numeric times, which was an appropriate choice for outcome summarization.
 ## Regression Planning Output
 
-
 ## Supplementary EDA
+Scatterplots involving days to stabilization were restricted to participants with observed stabilization times, because death-coded values are not interpretable as continuous follow-up times. Representative plots are shown below.
 
+```{r}
+knitr::include_graphics(
+  here::here("output/figure/scatter_muac_days_stable.png")
+)
+knitr::include_graphics(
+  here::here("output/figure/scatter_weight_days_stable.png")
+)
+knitr::include_graphics(
+  here::here("output/figure/scatter_height_days_stable.png")
+)
+```
 
+The scatterplots were useful for exploratory assessment of the relationship between selected continuous predictors and days to stabilization. These figures were restricted to participants with observed stabilization times, since death-coded values are not interpretable as continuous follow-up times. Across the displayed plots, the relationships with days to stabilization appeared modest rather than strongly linear, with no single variable showing a clear, dominant pattern. Accordingly, these scatterplots are best interpreted as descriptive visual checks for trend, spread, and possible outliers rather than as formal evidence of strong single-variable associations. Representative plots were shown in the report, while the broader goal of this section was to assess whether any continuous variables displayed obvious relationships with stabilization time.
+
+Overall, the two treatment groups appeared broadly comparable at baseline. In the descriptive outcome summaries, the Standard F75 group showed slightly lower mortality and slightly higher successful discharge and stabilization rates, while median days to stabilization was the same in both groups. The heatmap and scatterplots were useful for exploratory assessment of continuous-variable relationships, but they did not suggest a strong single-variable explanation for time to stabilization.
 # Team Notes
 
 - Yixin Hu: longitudinal boxplots
