@@ -140,8 +140,8 @@ knitr::kable(
 
 Clinical outcomes did not suggest a clear descriptive advantage of Modified F75 over Standard F75. In-hospital death remained a notable outcome overall, and the Standard F75 group showed slightly lower mortality and slightly higher successful discharge than the Modified F75 group. Reached stabilization was common in both arms, although the Standard F75 group appeared to have a modestly higher proportion of participants who stabilized, while failure to stabilize before death or withdrawal was somewhat more frequent in the Modified F75 group. Importantly, among participants with observed stabilization times, the median days to stabilization was the same in both treatment groups, indicating no meaningful difference in stabilization speed at the level of simple summary statistics. In this analysis, values coded as 999 for days_stable were treated as death codes rather than true numeric times, which was an appropriate choice for outcome summarization.
 
+## Logistic Regression Results (Discharged Status)
 
-### Logistic Regression Results (Discharged Status)
 ```{r}
 ### Logistic Regression Results (Discharged Status)
 
@@ -152,18 +152,17 @@ logit_results <- read.csv(
 logit_results
 ```
 
-From the logistic regression analysis, we were able to determine the correlation between the clinical and demographic factors and the probability of discharge.
+From the logistic regression analysis, we were able to determine associations between the clinical and demographic factors and the probability of discharge.
 
-Regarding the effect of the formula, the intervention (Modified F75) failed to have a significant effect compared to the other (standard F75) (p > 0.05), implying that there is no sufficient evidence to support the use of the modified formula for discharges.
+The intervention (Modified F75) was not statistically significantly associated with discharge status, so there's insufficient evidence of a difference between the intervention and the standard formula in predicting patient discharge status, holding all else constant.
 
-The patient's HIV status had an interesting correlation with the discharge. The patients who did not have their HIV status determined had significantly low chances of being discharged than those whose HIV status was negative.
+A patient's HIV status had an interesting association with the discharge status. Patients who had an unknown HIV result had significantly lower chances of being discharged compared to those who had negative HIV status (p = 0.04), holding all else constant.
 
-Age, gender, MUAC, and weight were not found to be significant factors in the prediction of discharge.
+Age, gender, MUAC, and weight were not found to be signifcant predictors of discharge status.
 
 ### Linear Regression Results (Days Stable)
+
 ```{r}
-
-
 linear_results <- read.csv(
   here::here("output", "table", "linear_regression_results.csv")
 )
@@ -171,17 +170,12 @@ linear_results <- read.csv(
 linear_results
 ```
 
-Factors correlated with number of days to stabilization have been identified from the linear regression analysis.
+None of the covariates were statistically significantly associated with days to stabilization. While the variables were not statistically significant, there could be clinical significance or relevance for including them in a model.
 
-There were few predictors which proved to be statistically significant, hence indicating that these variables do not affect the time taken for stabilization in this data set.
-
-Only one variable, kwashiorkor had some statistical significance (p-value was very close to 0.05) which indicated that those who had kwashiorkor took more days to get stabilized.
-
-This suggests there may be some clinical significance in the result obtained but this needs to be studied with a large sample size to confirm the finding.
-
-
+The intervention (Modified F75) was not significantly associated with days to stabilization, so there's insufficient evidence of a difference between the intervention and the standard formula in explaining days to stabilization, holding all else constant.
 
 ## Supplementary EDA
+
 Scatterplots involving days to stabilization were restricted to participants with observed stabilization times, because death-coded values are not interpretable as continuous follow-up times. Representative plots are shown below.
 
 ```{r}
@@ -199,6 +193,7 @@ knitr::include_graphics(
 The scatterplots were useful for exploratory assessment of the relationship between selected continuous predictors and days to stabilization. These figures were restricted to participants with observed stabilization times, since death-coded values are not interpretable as continuous follow-up times. Across the displayed plots, the relationships with days to stabilization appeared modest rather than strongly linear, with no single variable showing a clear, dominant pattern. Accordingly, these scatterplots are best interpreted as descriptive visual checks for trend, spread, and possible outliers rather than as formal evidence of strong single-variable associations. Representative plots were shown in the report, while the broader goal of this section was to assess whether any continuous variables displayed obvious relationships with stabilization time.
 
 Overall, the two treatment groups appeared broadly comparable at baseline. In the descriptive outcome summaries, the Standard F75 group showed slightly lower mortality and slightly higher successful discharge and stabilization rates, while median days to stabilization was the same in both groups. The heatmap and scatterplots were useful for exploratory assessment of continuous-variable relationships, but they did not suggest a strong single-variable explanation for time to stabilization.
+
 # Team Notes
 
 - Yixin Hu: longitudinal boxplots
