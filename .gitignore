@@ -4,6 +4,8 @@
 .Ruserdata
 *.pdf
 
+data/cleaned_data.rds
+
 .DS_Store
 Thumbs.db
 

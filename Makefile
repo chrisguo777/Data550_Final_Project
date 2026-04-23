@@ -1,4 +1,9 @@
+.PHONY: all install clean
+
 all: report/final_report.html
+
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
 
 data/cleaned_data.rds: code/00_data_cleaning.R data/f75_interim.csv
 	Rscript code/00_data_cleaning.R
@@ -60,7 +65,7 @@ report/final_report.html: report/final_report.Rmd \
 	Rscript -e "rmarkdown::render('report/final_report.Rmd', output_file = 'final_report.html', output_dir = 'report')"
 
 clean:
-	rm -f report/final_report.html
-	rm -f data/cleaned_data.rds
-	rm -f output/figure/*
-	rm -f output/table/*
+	Rscript -e "if (file.exists('report/final_report.html')) file.remove('report/final_report.html')"
+	Rscript -e "if (file.exists('data/cleaned_data.rds')) file.remove('data/cleaned_data.rds')"
+	Rscript -e "unlink('output/figure/*')"
+	Rscript -e "unlink('output/table/*')"
