@@ -1,3 +1,5 @@
+This project requires **R 4.5.3**. Please ensure you have the correct version installed before running `make install`.
+
 # F75 Project
 
 This repository is the reproducible project skeleton for the DATA 550 team analysis
@@ -31,6 +33,7 @@ from scripts instead of keeping all logic inside a single `.Rmd` file.
 run:
 
 ```sh
+make install
 make
 ```
 
@@ -77,4 +80,4 @@ required table output: `output/table`
 - Yuchen Li
   - co-owns `code/04_regression.R`
 - Project leader(Yingpu Guo)
-  - report integration
+  - report integration & Makefile workflow build & renv build
