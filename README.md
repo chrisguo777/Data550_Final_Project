@@ -44,6 +44,22 @@ This build will:
 - generate the required tables
 - render the final report to `report/final_report.html`
 
+## How to generate a customized report
+
+To render a version of the report showing only one regression model, run:
+
+```sh
+make customize type=logistic
+```
+
+or
+
+```sh
+make customize type=linear
+```
+
+This renders `report/custom_report.html` with only the selected regression section included. The `type` parameter accepts `logistic` (logistic regression on discharge status) or `linear` (linear regression on days to stabilization).
+
 ## What the report contains
 
 The final report is set up to include:
