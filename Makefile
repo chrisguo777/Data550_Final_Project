@@ -14,9 +14,6 @@ output/figure/height_boxplot.png: \
 code/01_boxplots.R data/cleaned_data.rds
 	Rscript code/01_boxplots.R
 
-output/figure/km_curve.png: code/02_kaplan_meier_curve.R data/cleaned_data.rds
-	Rscript code/02_kaplan_meier_curve.R
-
 output/figure/KM_plot_sex.png \
 output/figure/KM_plot_site.png \
 output/figure/KM_plot_bfeeding.png \
@@ -45,7 +42,6 @@ report/final_report.html: report/final_report.Rmd \
 	output/figure/muac_boxplot.png \
 	output/figure/weight_boxplot.png \
 	output/figure/height_boxplot.png \
-	output/figure/km_curve.png \
 	output/figure/KM_plot_sex.png \
 	output/figure/KM_plot_site.png \
 	output/figure/KM_plot_bfeeding.png \
