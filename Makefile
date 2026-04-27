@@ -1,4 +1,4 @@
-.PHONY: all install clean
+.PHONY: all install clean customize
 
 all: report/final_report.html
 
@@ -60,8 +60,30 @@ report/final_report.html: report/final_report.Rmd \
 	output/table/linear_regression_results.csv
 	Rscript -e "rmarkdown::render('report/final_report.Rmd', output_file = 'final_report.html', output_dir = 'report')"
 
+customize: output/figure/muac_boxplot.png \
+	output/figure/weight_boxplot.png \
+	output/figure/height_boxplot.png \
+	output/figure/KM_plot_sex.png \
+	output/figure/KM_plot_site.png \
+	output/figure/KM_plot_bfeeding.png \
+	output/figure/KM_plot_kwash.png \
+	output/figure/KM_plot_hiv.png \
+	output/figure/KM_plot_arm.png \
+	output/figure/heatmap_continuous.png \
+	output/figure/scatter_agemons_days_stable.png \
+	output/figure/scatter_muac_days_stable.png \
+	output/figure/scatter_weight_days_stable.png \
+	output/figure/scatter_height_days_stable.png \
+	output/table/table1_baseline.csv \
+	output/table/table2_outcomes_cat.csv \
+	output/table/table2_outcomes_days.csv \
+	output/table/logistic_regression_results.csv \
+	output/table/linear_regression_results.csv
+	Rscript -e "rmarkdown::render('report/final_report.Rmd', params = list(regression_type = '$(type)'), output_file = 'custom_report.html', output_dir = 'report')"
+
 clean:
 	Rscript -e "if (file.exists('report/final_report.html')) file.remove('report/final_report.html')"
+	Rscript -e "if (file.exists('report/custom_report.html')) file.remove('report/custom_report.html')"
 	Rscript -e "if (file.exists('data/cleaned_data.rds')) file.remove('data/cleaned_data.rds')"
 	Rscript -e "unlink('output/figure/*')"
 	Rscript -e "unlink('output/table/*')"

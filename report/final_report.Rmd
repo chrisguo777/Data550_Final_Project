@@ -3,6 +3,8 @@ title: "F75 Project Final Report"
 author: "Team: Yingpu (Paxton) Guo, Hua Xuan (Helen) Chen, Yuchen Li, Yixin Hu, Sihang Jiang"
 date: "`r Sys.Date()`"
 output: html_document
+params:
+  regression_type: "both"
 ---
 
 ```{r setup, include=FALSE}
@@ -140,39 +142,45 @@ knitr::kable(
 
 Clinical outcomes did not suggest a clear descriptive advantage of Modified F75 over Standard F75. In-hospital death remained a notable outcome overall, and the Standard F75 group showed slightly lower mortality and slightly higher successful discharge than the Modified F75 group. Reached stabilization was common in both arms, although the Standard F75 group appeared to have a modestly higher proportion of participants who stabilized, while failure to stabilize before death or withdrawal was somewhat more frequent in the Modified F75 group. Importantly, among participants with observed stabilization times, the median days to stabilization was the same in both treatment groups, indicating no meaningful difference in stabilization speed at the level of simple summary statistics. In this analysis, values coded as 999 for days_stable were treated as death codes rather than true numeric times, which was an appropriate choice for outcome summarization.
 
-## Logistic Regression Results (Discharged Status)
+```{r logistic-header, eval = params$regression_type %in% c("both", "logistic"), results='asis'}
+cat("## Logistic Regression Results (Discharged Status)\n")
+```
 
-```{r}
-### Logistic Regression Results (Discharged Status)
-
+```{r logistic-results, eval = params$regression_type %in% c("both", "logistic")}
 logit_results <- read.csv(
   here::here("output", "table", "logistic_regression_results.csv")
 )
-
 logit_results
 ```
 
-From the logistic regression analysis, we were able to determine associations between the clinical and demographic factors and the probability of discharge.
+```{r logistic-text, eval = params$regression_type %in% c("both", "logistic"), results='asis'}
+cat("From the logistic regression analysis, we were able to determine associations between the clinical and demographic factors and the probability of discharge.
 
 The intervention (Modified F75) was not statistically significantly associated with discharge status, so there's insufficient evidence of a difference between the intervention and the standard formula in predicting patient discharge status, holding all else constant.
 
 A patient's HIV status had an interesting association with the discharge status. Patients who had an unknown HIV result had significantly lower chances of being discharged compared to those who had negative HIV status (p = 0.04), holding all else constant.
 
-Age, gender, MUAC, and weight were not found to be signifcant predictors of discharge status.
+Age, gender, MUAC, and weight were not found to be significant predictors of discharge status.
+")
+```
 
-### Linear Regression Results (Days Stable)
+```{r linear-header, eval = params$regression_type %in% c("both", "linear"), results='asis'}
+cat("## Linear Regression Results (Days Stable)\n")
+```
 
-```{r}
+```{r linear-results, eval = params$regression_type %in% c("both", "linear")}
 linear_results <- read.csv(
   here::here("output", "table", "linear_regression_results.csv")
 )
-
 linear_results
 ```
 
-None of the covariates were statistically significantly associated with days to stabilization. While the variables were not statistically significant, there could be clinical significance or relevance for including them in a model.
+```{r linear-text, eval = params$regression_type %in% c("both", "linear"), results='asis'}
+cat("None of the covariates were statistically significantly associated with days to stabilization. While the variables were not statistically significant, there could be clinical significance or relevance for including them in a model.
 
 The intervention (Modified F75) was not significantly associated with days to stabilization, so there's insufficient evidence of a difference between the intervention and the standard formula in explaining days to stabilization, holding all else constant.
+")
+```
 
 ## Supplementary EDA
 
